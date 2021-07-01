@@ -79,12 +79,12 @@ namespace Nasc {
             this.set_titlebar (toolbar);
             toolbar.show_close_button = true;
             open_button = new Gtk.ToggleButton ();
-            open_button.set_image (new Gtk.Image.from_icon_name ("document-open", Gtk.IconSize.LARGE_TOOLBAR));
+            open_button.set_image (new Gtk.Image.from_icon_name ("document-open-symbolic", Gtk.IconSize.SMALL_TOOLBAR));
             open_button.set_tooltip_markup ("Open sheets");
             help_button = new Gtk.ToggleButton ();
-            help_button.set_image (new Gtk.Image.from_icon_name ("help-contents", Gtk.IconSize.LARGE_TOOLBAR));
+            help_button.set_image (new Gtk.Image.from_icon_name ("emoji-objects-symbolic", Gtk.IconSize.SMALL_TOOLBAR));
             help_button.set_tooltip_markup ("Open help");
-            var export_button = new Gtk.Button.from_icon_name ("document-export", Gtk.IconSize.LARGE_TOOLBAR);
+            var export_button = new Gtk.Button.from_icon_name ("open-menu-symbolic", Gtk.IconSize.SMALL_TOOLBAR);
             export_button.set_tooltip_markup ("Export…");
             var export_popover = new Gtk.Popover (export_button);
 

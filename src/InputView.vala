@@ -295,10 +295,11 @@ public class InputView : Gtk.Box {
         this.buffer.set_language (lang_manager.get_language ("nasc"));
         var style_scheme_manager = new Gtk.SourceStyleSchemeManager ();
         style_scheme_manager.set_search_path (dirs);
+        // TODO figure out how to detect dark theme
         if (NascSettings.get_instance ().dark_mode) {
             this.buffer.style_scheme = style_scheme_manager.get_scheme ("nasc_dark");
         } else {
-            this.buffer.style_scheme = style_scheme_manager.get_scheme ("nasc");
+            this.buffer.style_scheme = style_scheme_manager.get_scheme ("nasc_dark");
         }
     }
 

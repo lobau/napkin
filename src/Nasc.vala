@@ -23,7 +23,7 @@ namespace Nasc {
         public string[] args;
 
         construct {
-            program_name = "NaSC";
+            program_name = "Napkin";
             exec_name = "nasc";
 
             build_data_dir = Constants.DATADIR;

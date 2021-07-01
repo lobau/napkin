@@ -65,9 +65,14 @@ public class ResultView : Gtk.Box {
             color.alpha = 0.0;
         } else {
             /* background color very light grey */
-            color.red = 0.9;
-            color.green = 0.9;
-            color.blue = 0.9;
+            // color.red = 0.9;
+            // color.green = 0.9;
+            // color.blue = 0.9;
+            // color.alpha = 1.0;
+            // TODO: Figure out how to detect theme
+            color.red = 0.2;
+            color.green = 0.2;
+            color.blue = 0.2;
             color.alpha = 1.0;
         }
         text_view.override_background_color (Gtk.StateFlags.NORMAL, color);
