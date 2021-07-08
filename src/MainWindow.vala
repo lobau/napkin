@@ -354,6 +354,7 @@ namespace Nasc {
          * Saves the window height and width before closing
          */
         private bool on_window_closing () {
+
             int width, height;
             this.get_size (out width, out height);
             NascSettings.get_instance ().window_height = height;
@@ -368,6 +369,10 @@ namespace Nasc {
             get_position (out root_x, out root_y);
             NascSettings.get_instance ().opening_x = root_x;
             NascSettings.get_instance ().opening_y = root_y;
+
+            // TODO: figure out why window position is not recorded
+            // stderr.printf ("Root X: %s\n", root_x);
+            // stderr.printf ("Root Y: %s\n", root_y);
 
             if (NascSettings.get_instance ().show_tutorial) {
                 NascSettings.get_instance ().show_tutorial = false;

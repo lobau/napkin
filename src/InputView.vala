@@ -285,6 +285,8 @@ public class InputView : Gtk.Box {
         source_view.realize.connect (() => {
             var color = Gdk.RGBA ();
             source_view.get_style_context ().lookup_color ("theme_base_color", out color);
+            // var debugColor = source_view.get_style_context ().lookup_color ("theme_base_color", out color);
+            // stderr.printf ("Theme color: %s\n", debugColor);
             this.override_background_color (Gtk.StateFlags.NORMAL, color);
         });
         this.pack_start (alignment);
