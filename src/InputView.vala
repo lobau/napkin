@@ -64,8 +64,13 @@ public class InputView : Gtk.Box {
         result_widgets = new Gee.ArrayList<ResultBoxWidget> ();
         source_view.set_buffer (buffer);
         source_view.set_show_line_numbers (true);
+        source_view.set_top_margin (Nasc.top_padding);
         source_view.set_left_margin (Nasc.left_margin - 5);
+        source_view.set_right_margin (5);
         source_view.set_pixels_below_lines (Nasc.vertical_padding);
+        // source_view.set_highlight_current_line(true);
+        // source_view.set_top_padding = 50;
+        // source_view.set_pixels_below_lines (0);
         /* use 12pt font because the superscripts are displayed wrong if font is smaller! */
         var font_desc = source_view.get_style_context ().get_font (Gtk.StateFlags.NORMAL);
         font_desc.set_size (12 * Pango.SCALE);
@@ -279,17 +284,18 @@ public class InputView : Gtk.Box {
         });
         /* enable scrubbing mode support */
         scrubbing_mode ();
-        var alignment = new Gtk.Alignment (0, 0, 1, 1);
-        alignment.top_padding = Nasc.top_padding;
-        alignment.add (source_view);
+        // var alignment = new Gtk.Alignment (0, 0, 1, 1);
+        // TODO: figure out how to make the text lower
+        // alignment.top_padding = Nasc.top_padding;
+        // alignment.top_padding = 0;
+        // alignment.add (source_view);
         source_view.realize.connect (() => {
             var color = Gdk.RGBA ();
             source_view.get_style_context ().lookup_color ("theme_base_color", out color);
-            // var debugColor = source_view.get_style_context ().lookup_color ("theme_base_color", out color);
-            // stderr.printf ("Theme color: %s\n", debugColor);
             this.override_background_color (Gtk.StateFlags.NORMAL, color);
         });
-        this.pack_start (alignment);
+        // this.pack_start (alignment);
+        this.pack_start (source_view);
         /* setup syntax highlighting */
         string[] dirs = { Constants.STYLEDIR};
         var lang_manager = Gtk.SourceLanguageManager.get_default ();
@@ -299,9 +305,10 @@ public class InputView : Gtk.Box {
         style_scheme_manager.set_search_path (dirs);
 
         if (NascSettings.get_instance ().dark_mode) {
+        // InputView.source_view.
             this.buffer.style_scheme = style_scheme_manager.get_scheme ("nasc_dark");
         } else {
-            this.buffer.style_scheme = style_scheme_manager.get_scheme ("nasc_light");
+            this.buffer.style_scheme = style_scheme_manager.get_scheme ("nasc");
         }
     }
 

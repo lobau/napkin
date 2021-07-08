@@ -147,6 +147,7 @@ namespace Nasc {
             right_stack.add_named (result_box, "result");
             pane = new Gtk.Paned (Gtk.Orientation.HORIZONTAL);
             pane.expand = true;
+
             var scrollInput = new Gtk.ScrolledWindow (null, null);
             scrollInput.set_policy (Gtk.PolicyType.AUTOMATIC, Gtk.PolicyType.NEVER);
             scrollInput.add(input_box);
@@ -257,14 +258,23 @@ namespace Nasc {
             theme_button.clicked.connect (() => {
                 export_popover.hide ();
 
+                // string[] dirs = { Constants.STYLEDIR};
+                // var style_scheme_manager = new Gtk.SourceStyleSchemeManager ();
+                // style_scheme_manager.set_search_path (dirs);
+
                 if (NascSettings.get_instance ().dark_mode) {
                     // this.title = "foo";
                     NascSettings.get_instance ().dark_mode = false;
                     Gtk.Settings.get_default().gtk_application_prefer_dark_theme = false;
+
+                    // input_box.source_view.buffer.style_scheme = style_scheme_manager.get_scheme ("nasc");
+
                 } else {
                     // this.title = "bar";
                     NascSettings.get_instance ().dark_mode = true;
                     Gtk.Settings.get_default().gtk_application_prefer_dark_theme = true;
+
+                    // input_box.source_view.buffer.style_scheme = style_scheme_manager.get_scheme ("nasc_dark");
                 }
             });
 
@@ -290,9 +300,10 @@ namespace Nasc {
             show_all ();
 
             GLib.Timeout.add (500, () => {
-                if (NascSettings.get_instance ().show_tutorial) {
+                // TODO: change that back when tutorial is fixed
+                // if (NascSettings.get_instance ().show_tutorial) {
                     show_tutorial (info_bar);
-                }
+                // }
 
                 return false;
             });

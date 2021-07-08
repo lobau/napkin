@@ -66,7 +66,7 @@ public class ResultBoxWidget : Gtk.DrawingArea {
         }
         context.set_line_width (1);
         roundedrec (context, x, y + dy, box_width, box_height, 4, true);
-        roundedrec (context, x, y + dy, box_width, box_height, 4, false);
+        // roundedrec (context, x, y + dy, box_width, box_height, 4, false);
         context.move_to (x + box_dx_text - 1, y + dy + box_height - box_mdy_text);
         /* draw text */
         context.set_source_rgba (0.145098039, 0.42745098, 0.615686275, 1);

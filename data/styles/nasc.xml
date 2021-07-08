@@ -30,11 +30,11 @@
 
   <!-- Solarized Palette -->
   <color name="base03"                      value="#002b36"/>
-  <color name="base02"                      value="#073642"/>
+  <color name="base02"                      value="#eeeeee"/>
   <color name="base01"                      value="#586e75"/>
   <color name="base00"                      value="#333333"/>
   <color name="base0"                       value="#839496"/>
-  <color name="base1"                       value="#93a1a1"/>
+  <color name="base1"                       value="#333333"/>
   <color name="base2"                       value="#eee8d5"/>
   <color name="base3"                       value="#fdf6e3"/>
   <color name="yellow"                      value="#b58900"/>
