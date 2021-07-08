@@ -27,9 +27,10 @@ public class NascSettings : Object {
     public const string sheet_dir = "nasc";
    
    
-    public bool dark_mode { get; private set; }
+    // public bool dark_mode { get; private set; }
     public bool show_tutorial { get; set; }
     public bool advanced_mode { get; set; }
+    public bool dark_mode { get; set; }
     public int window_width { get; set; }
     public int window_height { get; set; }
     public int pane_position { get; set; }
@@ -48,8 +49,9 @@ public class NascSettings : Object {
         settings.bind ("opening-x", this, "opening_x", SettingsBindFlags.DEFAULT);
         settings.bind ("opening-y", this, "opening_y", SettingsBindFlags.DEFAULT);
         settings.bind ("open-sheet", this, "open_sheet", SettingsBindFlags.DEFAULT);
+        settings.bind ("dark-mode", this, "dark_mode", SettingsBindFlags.DEFAULT);
         // TODO change to prefer dark eos setting when available
-        dark_mode = Gtk.Settings.get_default ().gtk_application_prefer_dark_theme;
+        // dark_mode = Gtk.Settings.get_default ().gtk_application_prefer_dark_theme;
     }
 
     public static NascSettings get_instance () {

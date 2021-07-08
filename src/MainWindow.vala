@@ -43,6 +43,12 @@ namespace Nasc {
             this.set_application (app);
             this.icon_name = "nasc";
 
+            if(NascSettings.get_instance ().dark_mode) {
+                Gtk.Settings.get_default().set("gtk-application-prefer-dark-theme", true);
+            } else {
+                Gtk.Settings.get_default().set("gtk-application-prefer-dark-theme", false);
+            }
+
             int x = NascSettings.get_instance ().opening_x;
             int y = NascSettings.get_instance ().opening_y;
 
@@ -97,9 +103,15 @@ namespace Nasc {
             share_button.margin = 5;
             share_button.margin_top = 0;
 
+            var theme_button = new Gtk.Button.with_label (_("Switch Theme"));
+            theme_button.get_style_context ().add_class ("flat");
+            theme_button.margin = 5;
+            theme_button.margin_top = 0;
+
             var export_box = new Gtk.Box (Gtk.Orientation.VERTICAL, 0);
             export_box.pack_start (pdf_button, true, true, 0);
             export_box.pack_start (share_button, true, true, 0);
+            export_box.pack_start (theme_button, true, true, 0);
 
             export_popover.add (export_box);
             export_button.clicked.connect (() => {
@@ -240,6 +252,20 @@ namespace Nasc {
             share_button.clicked.connect (() => {
                 export_popover.hide ();
                 new MathBinDialog (this, controller);
+            });
+
+            theme_button.clicked.connect (() => {
+                export_popover.hide ();
+
+                if (NascSettings.get_instance ().dark_mode) {
+                    // this.title = "foo";
+                    NascSettings.get_instance ().dark_mode = false;
+                    Gtk.Settings.get_default().gtk_application_prefer_dark_theme = false;
+                } else {
+                    // this.title = "bar";
+                    NascSettings.get_instance ().dark_mode = true;
+                    Gtk.Settings.get_default().gtk_application_prefer_dark_theme = true;
+                }
             });
 
             controller.tutorial.connect (() => {

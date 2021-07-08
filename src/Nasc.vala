@@ -21,6 +21,7 @@ namespace Nasc {
     public class NascApp : Granite.Application {
         private MainWindow window = null;
         public string[] args;
+        // public bool gtk_application_prefer_dark_theme { get; set; };
 
         construct {
             program_name = "Napkin";
