@@ -305,11 +305,22 @@ public class InputView : Gtk.Box {
         style_scheme_manager.set_search_path (dirs);
 
         if (NascSettings.get_instance ().dark_mode) {
-        // InputView.source_view.
             this.buffer.style_scheme = style_scheme_manager.get_scheme ("nasc_dark");
         } else {
             this.buffer.style_scheme = style_scheme_manager.get_scheme ("nasc");
         }
+    }
+
+    public void switch_dark () {
+        // TODO: change the theme
+        // var style_scheme_manager = new Gtk.SourceStyleSchemeManager ();
+        // style_scheme_manager.set_search_path (dirs);
+
+        // if (NascSettings.get_instance ().dark_mode) {
+        //     source_view.buffer.style_scheme = style_scheme_manager.get_scheme ("nasc_dark");
+        // } else {
+        //     source_view.buffer.style_scheme = style_scheme_manager.get_scheme ("nasc");
+        // }
     }
 
     private void process_insert_text (ref Gtk.TextIter it, string s, int i) {

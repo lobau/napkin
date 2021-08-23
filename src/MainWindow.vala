@@ -301,9 +301,9 @@ namespace Nasc {
 
             GLib.Timeout.add (500, () => {
                 // TODO: change that back when tutorial is fixed
-                // if (NascSettings.get_instance ().show_tutorial) {
+                if (NascSettings.get_instance ().show_tutorial) {
                     show_tutorial (info_bar);
-                // }
+                }
 
                 return false;
             });
